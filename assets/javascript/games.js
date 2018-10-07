@@ -34,7 +34,7 @@ document.onkeyup = function(event) {
     console.log("User guesses:" + userGuesses);
 
     guessesLeft--
-    console.log(guessesLeft)
+    console.log("Guesses left: " + guessesLeft)
 
     var answerCheck = userGuesses.find(function(element) {
         return element == computerChoice;
@@ -45,13 +45,18 @@ document.onkeyup = function(event) {
     if (guessesLeft === 0 && computerChoice == answerCheck) {
         wins++;
         console.log("Wins: " + wins);
-        Reset();
+    
     } else if (guessesLeft === 0 && computerChoice !== answerCheck) {
         losses++;
         console.log("Losses: " + losses);
-        Reset();
+        
     }
-    
+
+    document.getElementById("userChoice-text").textContent = "You guessed: " + userChoice;
+    document.getElementById("guessesLeft-text").textContent = "You have " + guessesLeft + " guesses left.";
+    document.getElementById("guessesMade-text").textContent = "Your guesses so far: " + userGuesses;
+    document.getElementById("wins-text").textContent = "Wins: " + wins;
+    document.getElementById("losses-text").textContent = "Losses: " + losses;
 }
 
 // if 
