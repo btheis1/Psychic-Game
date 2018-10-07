@@ -13,10 +13,8 @@ var losses = 0;
 var guessesLeft = 9;
 //this will reset the game
 var Reset = function () {
-    var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-    guessLeft = 9;
-    wins = 0;
-    losses = 0;
+    computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
+    guessesLeft = 9;
     userGuesses = [];
 }
 
@@ -45,11 +43,12 @@ document.onkeyup = function(event) {
     if (guessesLeft === 0 && computerChoice == answerCheck) {
         wins++;
         console.log("Wins: " + wins);
+        Reset();
     
     } else if (guessesLeft === 0 && computerChoice !== answerCheck) {
         losses++;
         console.log("Losses: " + losses);
-        
+        Reset();
     }
 
     document.getElementById("userChoice-text").textContent = "You guessed: " + userChoice;
