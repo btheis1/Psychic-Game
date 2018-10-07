@@ -36,12 +36,17 @@ document.onkeyup = function(event) {
     guessesLeft--
     console.log(guessesLeft)
 
+    var answerCheck = userGuesses.find(function(element) {
+        return element == computerChoice;
+      });
+    console.log("Answer check: " + answerCheck);
+
     
-    if (guessesLeft === 0 && computerChoice === userGuesses) {
+    if (guessesLeft === 0 && computerChoice == answerCheck) {
         wins++;
         console.log("Wins: " + wins);
         Reset();
-    } else if (guessesLeft === 0 && computerChoice !== userGuesses) {
+    } else if (guessesLeft === 0 && computerChoice !== answerCheck) {
         losses++;
         console.log("Losses: " + losses);
         Reset();
